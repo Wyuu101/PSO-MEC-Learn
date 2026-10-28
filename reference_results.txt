@@ -1,0 +1,14 @@
+Independent analytical FCFS scheduling cross-check (not a SimPy runtime execution).
+Task generation: seed 2026. Handwritten PSO seed 7, 30 particles, 39 updates.
+
+Round robin: mean response 4.7664 s; mean CPU wait 2.6929 s; max response 10.9151 s; makespan 14.5235 s.
+Fastest-only: mean response 10.1432 s; mean CPU wait 8.6681 s; max response 18.6018 s; makespan 22.5129 s.
+Handwritten PSO: mean response 4.1349 s; mean CPU wait 2.2271 s; max response 7.4053 s; makespan 10.8763 s.
+Handwritten PSO allocation: [1, 2, 2, 0, 2, 1, 1, 2, 0, 2, 0, 1, 2, 0, 2, 1, 1, 1]
+Fitness calls: 1200.
+
+The cross-check explicitly calculates each job's arrival-at-CPU = arrival + upload duration,
+then schedules each job in arrival-at-CPU order against each server's available time.
+This is mathematically equivalent to the tutorial's fixed-speed non-preemptive FCFS model
+under its assumptions, except possible tie-breaking subtleties. It does not replace running
+actual SimPy and pymoo on the user's computer.
